@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact Us |NGOMA RentHub</title>
+  <link rel="stylesheet" href="contact.css" />
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container">
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="contact">
+    <div class="container">
+      <h2>Contact Us</h2>
+      <p>We’re here to help! Whether you have questions, feedback, or need assistance, feel free to reach out using the form below.</p>
+
+      <form id="contactForm" novalidate>
+        <label for="name">Your Name *</label>
+        <input type="text" id="name" name="name" required />
+
+        <label for="email">Email Address *</label>
+        <input type="email" id="email" name="email" required />
+
+        <label for="message">Your Message *</label>
+        <textarea id="message" name="message" required></textarea>
+
+        <button type="submit" class="btn">Send Message</button>
+        <div class="form-message" id="formMessage"></div>
+      </form>
+
+      <div class="contact-details">
+        <h3>Other Ways to Reach Us</h3>
+        <p>Email: support@ngomarenthub.com</p>
+        <p>Phone:0792428675/0732428675</p>
+        <p>Location: RWANDA,NGOMA district, NGOMA college</p>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p>© 2025 RentHub. All rights reserved.</p>
+  </footer>
+
+  <script>
+    document.getElementById("contactForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      const form = e.target;
+      const inputs = form.querySelectorAll("input, textarea");
+      let valid = true;
+
+      inputs.forEach((input) => {
+        if (!input.checkValidity()) {
+          input.classList.add("invalid");
+          valid = false;
+        } else {
+          input.classList.remove("invalid");
+        }
+      });
+
+      const message = document.getElementById("formMessage");
+      if (valid) {
+        message.textContent = "Your message has been sent!";
+        message.style.color = "green";
+        form.reset();
+      } else {
+        message.textContent = "Please fill out all fields correctly.";
+        message.style.color = "red";
+      }
+    });
+  </script>
+</body>
+</html>
